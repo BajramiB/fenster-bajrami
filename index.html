@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fenster & Rollladen Bajrami</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Fenster & Rollladen Bajrami</h1>
+      <nav>
+        <ul>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="datenschutz-impressum.html">Datenschutz & Impressum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Qualität nach Maß – für Ihr Zuhause</h2>
+      <p>Fenster, Türen, Rollläden und Sonnenschutz vom Fachbetrieb</p>
+      <a href="#kontakt" class="btn">Jetzt Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <section id="leistungen" class="leistungen">
+    <div class="container">
+      <h2>Unsere Leistungen</h2>
+      <div class="grid">
+        <div class="leistung">
+          <h3>Fensterbau</h3>
+          <p>Moderne Fenster in Kunststoff, Holz oder Aluminium – energieeffizient und langlebig.</p>
+        </div>
+        <div class="leistung">
+          <h3>Türenmontage</h3>
+          <p>Haustüren und Innentüren – individuell nach Wunsch und Sicherheitsanforderungen.</p>
+        </div>
+        <div class="leistung">
+          <h3>Rollläden & Sonnenschutz</h3>
+          <p>Manuell oder elektrisch, modern und funktional – für optimale Licht- und Wärmeregulierung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ueber-uns" class="ueber-uns">
+    <div class="container">
+      <h2>Über uns</h2>
+      <p>Als inhabergeführtes Unternehmen stehen wir für Qualität, Verlässlichkeit und regionale Verbundenheit. Wir beraten Sie persönlich und finden für jedes Projekt die passende Lösung.</p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="kontaktformular">
+    <div class="container">
+      <h2>Kontaktieren Sie uns</h2>
+      <form action="mailto:info@fenster-bajrami.de" method="post" enctype="text/plain" novalidate>
+        <label for="name">Ihr Name*</label>
+        <input type="text" id="name" name="Name" required />
+
+        <label for="email">Ihre E-Mail-Adresse*</label>
+        <input type="email" id="email" name="Email" required />
+
+        <label for="nachricht">Ihre Nachricht*</label>
+        <textarea id="nachricht" name="Nachricht" rows="6" required></textarea>
+
+        <div class="datenschutz">
+          <input type="checkbox" id="dsgvo" required />
+          <label for="dsgvo">
+            Ich habe die <a href="datenschutz-impressum.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und akzeptiere sie.*
+          </label>
+        </div>
+
+        <button type="submit">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Fenster & Rollladen Bajrami – Alle Rechte vorbehalten | 
+      <a href="datenschutz-impressum.html">Datenschutz & Impressum</a></p>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Manager -->
+  <div id="cookie-consent-manager" class="ccm-hidden" role="dialog" aria-modal="true" aria-labelledby="ccm-title" aria-describedby="ccm-desc">
+    <div class="ccm-content">
+      <h2 id="ccm-title">Cookie-Einstellungen</h2>
+      <p id="ccm-desc">
+        Diese Website verwendet Cookies und Tracking-Technologien für Analyse und Marketing. Bitte wählen Sie aus, welchen Diensten Sie zustimmen möchten.
+        <a href="datenschutz-impressum.html" target="_blank" rel="noopener noreferrer">Mehr Infos</a>
+      </p>
+      <form id="ccm-form">
+        <label><input type="checkbox" id="consent-analytics" /> Google Analytics (Webanalyse)</label><br />
+        <label><input type="checkbox" id="consent-fbpixel" /> Facebook Pixel (Marketing)</label>
+        <div class="ccm-buttons">
+          <button type="button" id="btn-save-consent">Speichern</button>
+          <button type="button" id="btn-reject-consent">Ablehnen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Button zum Öffnen der Einstellungen -->
+  <button id="btn-open-ccm" class="ccm-settings-btn" aria-label="Cookie-Einstellungen öffnen">Cookie-Einstellungen</button>
+
+  <script>
+    (function () {
+      const ccm = document.getElementById("cookie-consent-manager");
+      const btnSave = document.getElementById("btn-save-consent");
+      const btnReject = document.getElementById("btn-reject-consent");
+      const btnOpen = document.getElementById("btn-open-ccm");
+      const chkAnalytics = document.getElementById("consent-analytics");
+      const chkFbPixel = document.getElementById("consent-fbpixel");
+
+      function loadConsent() {
+        const consent = localStorage.getItem("cookieConsent");
+        if (!consent) return null;
+        try {
+          return JSON.parse(consent);
+        } catch {
+          return null;
+        }
+      }
+
+      function saveConsent(consent) {
+        localStorage.setItem("cookieConsent", JSON.stringify(consent));
+      }
+
+      function loadGoogleAnalytics() {
+        if (window.ga) return;
+        (function (i, s, o, g, r, a, m) {
+          i["GoogleAnalyticsObject"] = r;
+          (i[r] =
+            i[r] ||
+            function () {
+              (i[r].q = i[r].q || []).push(arguments);
+            }),
+            (i[r].l = 1 * new Date());
+          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m);
+        })(
+          window,
+          document,
+          "script",
+          "https://www.google-analytics.com/analytics.js",
+          "ga"
+        );
+        ga("create", "UA-DEINE-ID-HIER", "auto");
+        ga("send", "pageview");
+      }
+
+      function loadFacebookPixel() {
+        if (window.fbq) return;
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js"
+        );
+        fbq("init", "DEINE-FB-PIXEL-ID-HIER");
+        fbq("track", "PageView");
+      }
+
+      function showConsentManager() {
+        ccm.classList.remove("ccm-hidden");
+        const consent = loadConsent();
+        if (consent) {
+          chkAnalytics.checked = consent.analytics || false;
+          chkFbPixel.checked = consent.fbPixel || false;
+        }
+      }
+
+      function hideConsentManager() {
+        ccm.classList.add("ccm-hidden");
+      }
+
+      function init() {
+        const consent = loadConsent();
+        if (consent) {
+          hideConsentManager();
+          if (consent.analytics) loadGoogleAnalytics();
+          if (consent.fbPixel) loadFacebookPixel();
+        } else {
+          showConsentManager();
+        }
+      }
+
+      btnSave.addEventListener("click", () => {
+        const consent = {
+          analytics: chkAnalytics.checked,
+          fbPixel: chkFbPixel.checked,
+        };
+        saveConsent(consent);
+        hideConsentManager();
+        if (consent.analytics) loadGoogleAnalytics();
+        if (consent.fbPixel) loadFacebookPixel();
+      });
+
+      btnReject.addEventListener("click", () => {
+        const consent = {
+          analytics: false,
+          fbPixel: false,
+        };
+        saveConsent(consent);
+        hideConsentManager();
+      });
+
+      btnOpen.addEventListener("click", () => {
+        showConsentManager();
+      });
+
+      init();
+    })();
+  </script>
+</body>
+</html>
